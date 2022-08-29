@@ -1,6 +1,6 @@
 <template>
 <div id="formulario-persona">
-    <form @submit.prevent="enviarFormulario">
+    <form @submit.prevent="enviarFormulario" method="post">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -84,7 +84,9 @@ export default {
       }
     },
     methods: {
+
         enviarFormulario() {
+
             this.procesando = true;
             this.resetEstado();
             
@@ -93,24 +95,24 @@ export default {
                 this.error = true;
                 return;
             }
+
+            //Enviamos los datos a apps-script
+            google.script.run.doPost();
+    
             this.$emit('add-persona', this.persona);
             this.$refs.nombre.focus();
             this.error = false;
             this.correcto = true;
             this.procesando = false;
 
-            //Enviamos los datos a apps-script
             
-            //google.script.run.get_data(this.persona);
-           
             // Restablecemos el valor de la variables
             this.persona= {
                 nombre: '',
                 apellido: '',
                 email: '',
             }
-
-
+        
         },
         resetEstado() {
             this.correcto = false;
