@@ -12,8 +12,8 @@
     "glogin": "clasp login",
     "glogout": "clasp logout",
     "gpull": "clasp pull",
-    "gpush": "clasp deploy --deploymentId  AKfycbz_zhsVXofIQVxu4nsLnqOWqF3_naFUyr6ZHOKWOOY --versionNumber 0 ",
-    "gcreate": "clasp create --title \"test\" --rootDir ./appsscript",
+    "gpush": "clasp deploy --deploymentId   AKfycbyuZ2ZiJeKK3yIV6PcmD73a52txM0gi5MzYe2QCjRxo --versionNumber 0 ",
+    "gcreate": "clasp create --title \"tutorial-vue\" --rootDir ./appsscript",
     "gstart": "clasp push --watch",
     "gopen": "clasp open --webapp",
     "ghelp": "clasp --help",
@@ -22,10 +22,12 @@
   "dependencies": {
     "@types/google-apps-script": "^1.0.55",
     "core-js": "^3.8.3",
+    "nodemon": "^2.0.19",
     "rimraf": "^3.0.2",
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@parcel/transformer-vue": "^2.7.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "parcel": "^2.7.0",

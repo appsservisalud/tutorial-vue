@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import TablaPersonas from '@/components/TablaPersonas.vue'
-import FormularioPersona from '@/components/FormularioPersona.vue'
+import TablaPersonas from './components/TablaPersonas.vue'
+import FormularioPersona from './components/FormularioPersona.vue'
 export default {
     name: 'app',
     components: {
