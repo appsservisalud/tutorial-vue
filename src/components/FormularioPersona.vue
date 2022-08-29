@@ -67,6 +67,8 @@
 </template>
 
 <script>
+import { userInfo } from 'os';
+
 export default {
     name: 'formulario-persona',
     data() {
@@ -96,12 +98,19 @@ export default {
             this.error = false;
             this.correcto = true;
             this.procesando = false;
+
+            //Enviamos los datos a apps-script
+            
+            //google.script.run.get_data(this.persona);
+           
             // Restablecemos el valor de la variables
             this.persona= {
                 nombre: '',
                 apellido: '',
                 email: '',
             }
+
+
         },
         resetEstado() {
             this.correcto = false;
