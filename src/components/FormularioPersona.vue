@@ -122,8 +122,6 @@ export default {
 }
 </script>
 
-<style scoped>
-form {
-    margin-bottom: 2rem;
-}
+<style>
+@import '../assets/FormularioPersona/formulariopersona.css';
 </style>
