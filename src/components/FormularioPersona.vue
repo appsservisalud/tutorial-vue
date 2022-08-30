@@ -1,6 +1,6 @@
 <template>
 <div id="formulario-persona">
-    <form @submit.prevent="enviarFormulario">
+    <form @submit.prevent="enviarFormulario" method="POST">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import { userInfo } from 'os';
-
+import axios from 'axios';
+var qs = require('qs');
 export default {
     name: 'formulario-persona',
     data() {
@@ -87,6 +87,8 @@ export default {
 
         enviarFormulario() {
 
+            var qs = require('qs');
+
             this.procesando = true;
             this.resetEstado();
             
@@ -97,7 +99,12 @@ export default {
             }
 
             //Enviamos los datos a apps-script
-            google.script.run.doPost();
+            //google.script.run.doPost();
+
+            axios
+            .post("https://script.google.com/macros/s/AKfycbwUfMDY1P7RWDQTRz-EpFv7G2VlgtD0U6jaoGAgymSoPC46YfSsEVWvBIr0M9YQbURL/exec",qs.stringify(this.persona))
+            .then(function (response) {console.log(response);});
+
     
             this.$emit('add-persona', this.persona);
             this.$refs.nombre.focus();
