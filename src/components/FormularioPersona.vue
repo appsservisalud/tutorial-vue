@@ -1,6 +1,6 @@
 <template>
 <div id="formulario-persona">
-    <form @submit.prevent="enviarFormulario" method="post">
+    <form @submit.prevent="enviarFormulario">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
