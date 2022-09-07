@@ -19,9 +19,13 @@ function get_data(persona)
   
   var ss = SpreadsheetApp.openById("1z34KYGPUe5l2CYP-xzeXqvGzZmMg93NqrNibsificuY");
   var sheet = ss.getSheetByName('Data');
-  sheet.appendRow([1,persona.nombre,persona.apellido,persona.email]);
+  var id = ss.getLastRow() + 1
+  sheet.appendRow([id,persona.nombre,persona.apellido,persona.email]);
   
+
   return persona
+
+  throw("Registro incorrecto");
 
 }
 

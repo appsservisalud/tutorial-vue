@@ -57,7 +57,7 @@
                         Debes rellenar todos los campos!
                     </div>
                     <div v-if="correcto" class="alert alert-success" role="alert">
-                        La persona ha sido agregada correctamente!
+                        El registro de {{persona.nombre}} {{persona.apellido}} se guardo con exito.
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
 
 <script>
 import axios from 'axios';
+import TablaPersonasVue from './TablaPersonas.vue';
 var qs = require('qs');
 export default {
     name: 'formulario-persona',
@@ -88,23 +89,6 @@ export default {
         enviarFormulario() {
 
 
-            //Usa las callback functions para comunicarte asincronicamente con el servidor
-
-            function succes_page(persona)
-            {   
-
-                return console.log(persona)
-            }
-
-            google.script.run
-            .withSuccessHandler(succes_page) 
-            .withFailureHandler( function error_page(error)
-            {
-                return console.log(error)
-            })  
-            .get_data(this.persona)
-
-            
             this.procesando = true;
             this.resetEstado();
             
@@ -114,13 +98,31 @@ export default {
                 return;
             }
 
-            //person = ['nathaly','medina','nathaly@gmail.com']
-            
-            this.$emit('add-persona', this.persona);
                 this.$refs.nombre.focus();
                 this.error = false;
                 this.correcto = true;
                 this.procesando = false;
+
+
+            //Usa las callback functions para comunicarte asincronicamente con el servidor
+
+            
+            function error_page(error)
+                    {
+                        return console.log(error)
+                    }
+
+            google.script.run
+            .withSuccessHandler((persona) => 
+                    {
+                        this.persona = persona
+                        return console.log(persona)
+                    },this.$emit('add-persona', this.persona))
+
+            .withFailureHandler(error_page)
+
+            .get_data(this.persona)
+
 
         
             // Restablecemos el valor de la variables
