@@ -87,8 +87,24 @@ export default {
 
         enviarFormulario() {
 
-            var qs = require('qs');
 
+            //Usa las callback functions para comunicarte asincronicamente con el servidor
+
+            function succes_page(persona)
+            {   
+
+                return console.log(persona)
+            }
+
+            google.script.run
+            .withSuccessHandler(succes_page) 
+            .withFailureHandler( function error_page(error)
+            {
+                return console.log(error)
+            })  
+            .get_data(this.persona)
+
+            
             this.procesando = true;
             this.resetEstado();
             
@@ -98,21 +114,15 @@ export default {
                 return;
             }
 
-            //Enviamos los datos a apps-script
-            //google.script.run.doPost();
-
-            axios
-            .post("https://script.google.com/macros/s/AKfycbwUfMDY1P7RWDQTRz-EpFv7G2VlgtD0U6jaoGAgymSoPC46YfSsEVWvBIr0M9YQbURL/exec",qs.stringify(this.persona))
-            .then(function (response) {console.log(response);});
-
-    
-            this.$emit('add-persona', this.persona);
-            this.$refs.nombre.focus();
-            this.error = false;
-            this.correcto = true;
-            this.procesando = false;
-
+            //person = ['nathaly','medina','nathaly@gmail.com']
             
+            this.$emit('add-persona', this.persona);
+                this.$refs.nombre.focus();
+                this.error = false;
+                this.correcto = true;
+                this.procesando = false;
+
+        
             // Restablecemos el valor de la variables
             this.persona= {
                 nombre: '',
@@ -121,6 +131,8 @@ export default {
             }
         
         },
+
+
         resetEstado() {
             this.correcto = false;
             this.error = false;

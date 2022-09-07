@@ -14,7 +14,7 @@
     "gpull": "clasp pull",
     "gpush": "clasp deploy --deploymentId   AKfycbyuZ2ZiJeKK3yIV6PcmD73a52txM0gi5MzYe2QCjRxo --versionNumber 0 ",
     "gcreate": "clasp create --title \"tutorial-vue\" --rootDir ./appsscript",
-    "gstart": "clasp push --watch",
+    "gstart": "clasp push",
     "gopen": "clasp open --webapp",
     "ghelp": "clasp --help",
     "gdeploys": "clasp deployments"

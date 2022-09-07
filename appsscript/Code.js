@@ -9,19 +9,20 @@ function doGet(){
 function doPost(){
 
     var datos = "datos"
-    return Logger.log(datos);
+    Logger.log(datos);
 
 }
 
 
-function get_data()
+function get_data(persona)
 {
   
-  //var ss = SpreadsheetApp.openById("1z34KYGPUe5l2CYP-xzeXqvGzZmMg93NqrNibsificuY");
-  //var sheet = ss.getSheetByName('Data');
-  return Logger.log("David");
+  var ss = SpreadsheetApp.openById("1z34KYGPUe5l2CYP-xzeXqvGzZmMg93NqrNibsificuY");
+  var sheet = ss.getSheetByName('Data');
+  sheet.appendRow([1,persona.nombre,persona.apellido,persona.email]);
+  
+  return persona
 
-  //sheet.appendRow([userInfo]);
 }
 
 
