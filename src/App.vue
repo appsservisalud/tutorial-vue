@@ -25,28 +25,24 @@ export default {
     },
     data() {
         return {
-            personas: [
-                {
-                    id: 1,
-                    nombre: 'Jon',
-                    apellido: 'Nieve',
-                    email: 'jon@email.com',
-                },
-                {
-                    id: 2,
-                    nombre: 'Tyrion',
-                    apellido: 'Lannister',
-                    email: 'tyrion@email.com',
-                },
-                {
-                    id: 3,
-                    nombre: 'Daenerys',
-                    apellido: 'Targaryen',
-                    email: 'daenerys@email.com',
-                },
-            ],
+            personas:null
         }
+
     },
+
+    mounted(){
+
+        google.script.run
+            .withSuccessHandler((personas_Json) => 
+                    {
+                      this.personas = personas_Json    
+                    })
+
+            .withFailureHandler((error)=>{return error})
+            .getSheetJson()
+
+    },
+
     methods: {
 
         agregarPersona(persona) {

@@ -105,8 +105,6 @@ export default {
 
 
             //Usa las callback functions para comunicarte asincronicamente con el servidor
-
-            
             function error_page(error)
                     {
                         return console.log(error)
@@ -116,14 +114,11 @@ export default {
             .withSuccessHandler((persona) => 
                     {
                         this.persona = persona
-                        return console.log(persona)
                     },this.$emit('add-persona', this.persona))
 
             .withFailureHandler(error_page)
 
             .get_data(this.persona)
-
-
         
             // Restablecemos el valor de la variables
             this.persona= {
