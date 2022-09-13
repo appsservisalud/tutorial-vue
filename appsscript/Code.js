@@ -39,16 +39,21 @@ return personas_Json
 
 }
 
-function get_data_all(personas)
+function update_data()
 {
   
-  var data = sheet.getDataRange().getDisplayValues()
-  return data
+  var values = [['2','david','martinez','luis@gmail.com']];
+  for(var i=0;i<dataBody.length;i++)
+{
+  
+  if ( dataBody[i][0] == values[0][0]){
+  var range = sheet.getRange(dataBody[i][0],1,1,4);
+  range.setValues(values);
 
-  throw("Registro incorrecto");
-
+  }
 }
-
+  
+}
 
 function get_data(persona)
 {
