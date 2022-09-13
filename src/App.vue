@@ -57,18 +57,21 @@ export default {
     
             this.personas= [...this.personas, { ...persona, id}];
 
-            return console.log(this.personas)
             
         },
         eliminarPersona(id) {
             this.personas = this.personas.filter(
                 persona => persona.id !== id
             );
+            return console.log("guarda");
+            
         },
         actualizarPersona(id, personaActualizada) {
             this.personas = this.personas.map(persona =>
                 persona.id === id ? personaActualizada : persona
+
             )
+            
         }
     }
 }

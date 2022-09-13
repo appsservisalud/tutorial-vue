@@ -61,6 +61,7 @@ export default {
         editarPersona(persona) {
             this.personaEditada = Object.assign({}, persona);
             this.editando = persona.id;
+            
         },
         guardarPersona(persona) {
             if (!persona.nombre.length || !persona.apellido.length || !persona.email.length) {
@@ -68,10 +69,19 @@ export default {
             }
             this.$emit('actualizar-persona', persona.id, persona);
             this.editando = null;
+
+            console.log(persona)
+
+            google.script.run
+            .withSuccessHandler((data_exit) => {return data_exit })
+            .withFailureHandler((error)=>{return error})
+            .update_data(persona)
+
         },
         cancelarEdicion(persona) {
             Object.assign(persona, this.personaEditada);
             this.editando = null;
+            return console.log("cancelado")
         }
     }
 }

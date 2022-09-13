@@ -3,16 +3,6 @@ var ss = SpreadsheetApp.openById("1z34KYGPUe5l2CYP-xzeXqvGzZmMg93NqrNibsificuY")
 var sheet = ss.getSheetByName('Data');
 var rows = sheet.getRange(1,1,sheet.getLastRow(),sheet.getLastColumn()).getValues();
 
-function doGet(){
-    
-    var template = HtmlService.createTemplateFromFile("index");
-    var output = template.evaluate();
-    return output;
-}
-
-
-function getSheetJson(){
-
 var dataBody = [];
 var body = rows.slice(1);
 
@@ -23,6 +13,16 @@ body.forEach(function(res,i){
 });
 
 
+
+function doGet(){
+    
+    var template = HtmlService.createTemplateFromFile("index");
+    var output = template.evaluate();
+    return output;
+}
+
+
+function getSheetJson(){
 
 //var datos = Utilities.formatString("%s,%s",k,j)
 //Logger.log(datos)
@@ -39,19 +39,18 @@ return personas_Json
 
 }
 
-function update_data()
+function update_data(personaActualizada)
 {
+  Logger.log(personaActualizada)
+  //for(var i=0;i<dataBody.length;i++)
+//{
   
-  var values = [['2','david','martinez','luis@gmail.com']];
-  for(var i=0;i<dataBody.length;i++)
-{
-  
-  if ( dataBody[i][0] == values[0][0]){
-  var range = sheet.getRange(dataBody[i][0],1,1,4);
-  range.setValues(values);
+  //if ( dataBody[i][0] == persona[0][0]){
+  //var range = sheet.getRange(dataBody[i][0],1,1,4);
+  //range.setValues(persona);
 
-  }
-}
+  //}
+//}
   
 }
 
