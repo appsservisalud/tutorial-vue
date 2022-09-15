@@ -60,17 +60,25 @@ export default {
             
         },
         eliminarPersona(id) {
-            this.personas = this.personas.filter(
-                persona => persona.id !== id
-            );
-            return console.log("guarda");
-            
+
+            google.script.run
+            .withSuccessHandler(() => {
+                this.personas = this.personas.filter(persona => persona.id !== id);
+            })
+
+            .withFailureHandler((error)=>{return error})
+
+            .delete_data([...this.personas])
+
+
+               
         },
         actualizarPersona(id, personaActualizada) {
             this.personas = this.personas.map(persona =>
                 persona.id === id ? personaActualizada : persona
 
             )
+
             
         }
     }

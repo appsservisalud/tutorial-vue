@@ -67,15 +67,40 @@ export default {
             if (!persona.nombre.length || !persona.apellido.length || !persona.email.length) {
                 return;  
             }
-            this.$emit('actualizar-persona', persona.id, persona);
-            this.editando = null;
 
-            console.log(persona)
+        
+            //Usa las callback functions para comunicarte asincronicamente con el servidor
+            function error_page(error)
+                    {
+                        return console.log(error)
+                    }
 
             google.script.run
-            .withSuccessHandler((data_exit) => {return data_exit })
-            .withFailureHandler((error)=>{return error})
+            .withSuccessHandler((persona) => 
+                    {
+                    },this.$emit('actualizar-persona', persona.id, persona))
+
+            .withFailureHandler(error_page)
+
             .update_data(persona)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+            
+            this.editando = null;
 
         },
         cancelarEdicion(persona) {

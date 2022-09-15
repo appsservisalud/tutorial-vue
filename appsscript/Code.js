@@ -39,19 +39,40 @@ return personas_Json
 
 }
 
-function update_data(personaActualizada)
+function update_data(data)
 {
-  Logger.log(personaActualizada)
-  //for(var i=0;i<dataBody.length;i++)
-//{
   
-  //if ( dataBody[i][0] == persona[0][0]){
-  //var range = sheet.getRange(dataBody[i][0],1,1,4);
-  //range.setValues(persona);
+  for(var i=0;i<dataBody.length;i++)
+{
+  
+  if ( dataBody[i][0] === data.id){
+  var range = sheet.getRange(dataBody[i][0],1,1,4);
+  range.setValues([[data.id,data.nombre,data.apellido,data.email]]);
 
-  //}
-//}
+  }
+
+  Logger.log([[data.id,data.nombre,data.apellido,data.email]])
+
+}
+
+
   
+}
+
+
+function delete_data(data)
+
+{
+  
+  for(var i=0;i<dataBody.length;i++)
+{
+  
+  if ( dataBody[i][0] === data.id){
+     ss.deleteRow(i + 2)
+  }
+
+}
+
 }
 
 function get_data(persona)
