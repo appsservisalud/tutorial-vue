@@ -68,7 +68,7 @@ export default {
 
             .withFailureHandler((error)=>{return error})
 
-            .delete_data([...this.personas])
+            .delete_data(id)
 
 
                

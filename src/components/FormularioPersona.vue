@@ -1,6 +1,6 @@
 <template>
 <div id="formulario-persona">
-    <form @submit.prevent="enviarFormulario" method="POST">
+    <form @submit.prevent="enviarFormulario">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -57,7 +57,7 @@
                         Debes rellenar todos los campos!
                     </div>
                     <div v-if="correcto" class="alert alert-success" role="alert">
-                        El registro de {{persona.nombre}} {{persona.apellido}} se guardo con exito.
+                        La persona ha sido agregada correctamente!
                     </div>
                 </div>
             </div>
@@ -67,9 +67,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-import TablaPersonasVue from './TablaPersonas.vue';
-var qs = require('qs');
 export default {
     name: 'formulario-persona',
     data() {
@@ -85,10 +82,7 @@ export default {
       }
     },
     methods: {
-
         enviarFormulario() {
-
-
             this.procesando = true;
             this.resetEstado();
             
@@ -97,39 +91,33 @@ export default {
                 this.error = true;
                 return;
             }
-
-                this.$refs.nombre.focus();
-                this.error = false;
-                this.correcto = true;
-                this.procesando = false;
-
+     
+            this.$refs.nombre.focus();
+            this.error = false;
+            this.correcto = true;
+            this.procesando = false;
 
             //Usa las callback functions para comunicarte asincronicamente con el servidor
             function error_page(error)
                     {
                         return console.log(error)
                     }
-
             google.script.run
             .withSuccessHandler((persona) => 
                     {
                         this.persona = persona
                     },this.$emit('add-persona', this.persona))
-
             .withFailureHandler(error_page)
-
             .get_data(this.persona)
-        
+
+
             // Restablecemos el valor de la variables
             this.persona= {
                 nombre: '',
                 apellido: '',
                 email: '',
             }
-        
         },
-
-
         resetEstado() {
             this.correcto = false;
             this.error = false;

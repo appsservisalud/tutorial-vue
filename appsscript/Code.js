@@ -46,7 +46,7 @@ function update_data(data)
 {
   
   if ( dataBody[i][0] === data.id){
-  var range = sheet.getRange(dataBody[i][0],1,1,4);
+  var range = sheet.getRange(i + 2,1,1,4);
   range.setValues([[data.id,data.nombre,data.apellido,data.email]]);
 
   }
@@ -60,14 +60,14 @@ function update_data(data)
 }
 
 
-function delete_data(data)
+function delete_data(id)
 
 {
   
   for(var i=0;i<dataBody.length;i++)
 {
   
-  if ( dataBody[i][0] === data.id){
+  if ( dataBody[i][0] === id){
      ss.deleteRow(i + 2)
   }
 
