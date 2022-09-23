@@ -9,14 +9,7 @@
         >
           <header class="modal-header" id="modalTitle">
             <slot name="header"> Default Header </slot>
-            <button
-              type="button"
-              class="close-btn"
-              @click="close"
-              aria-label="Close Modal"
-            >
-              x
-            </button>
+            
           </header>
   
           <main class="modal-body" id="modalDescription">
@@ -66,15 +59,15 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    width: auto;
+    width: 500px;
     height:auto;
-    margin-left: 300px;
+    margin-left: 400px;
     margin-top:30px;
   }
   
-  .modal-header,
+
   .modal-footer {
-    padding: 15px;
+    padding: 5px;
     display: flex;
   }
   
@@ -134,7 +127,7 @@
   
   .modal-fade-enter-active,
   .modal-fade-leave-active {
-    transition: opacity 0.5s ease;
+    transition: opacity 0.001s ease;
   }
   </style>
   

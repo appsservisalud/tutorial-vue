@@ -3,8 +3,7 @@
 
 
 <div id="tabla-personas">
-
-    <Modal v-show="visible" @close="close">
+ <Modal v-show="visible" @close="close">
       <template v-slot:header> Actualización de usuario</template>
 
       <template v-slot:body>
@@ -46,15 +45,13 @@
       <template v-slot:footer> You can put your footer here </template>
     </Modal>
 
-
-
-
-
-
     <div v-if="!personas.length" class="alert alert-info" role="alert">
         No se han agregado personas
     </div>
+
+
     <table class="table">
+     
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -96,6 +93,7 @@
                 </td>
             </tr>
         </tbody>
+
     </table>
 </div>
 
@@ -105,14 +103,16 @@
 </template>
 
 <script>
+import DataTable from 'datatables.net-vue3'
 import Modal from "./Modal.vue"
 export default {
-    name: ['tabla-personas','Modal'],
+    name: ['tabla-personas','Modal','DataTable'],
     props: {
         personas: Array,
     },
     components: {
-    Modal
+    Modal,
+    DataTable
   },
     data() {
         return {
@@ -120,6 +120,16 @@ export default {
             editando: null,
         }
     },
+    updated: function () {
+   this.$nextTick(function () {
+     $('#table').DataTable({
+           'destroy'      :true,
+           'stateSave'   : true,
+
+        }).draw();
+
+   })
+ },
     methods: {
 
         openModal() {

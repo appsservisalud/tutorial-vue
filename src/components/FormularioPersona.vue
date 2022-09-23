@@ -40,7 +40,10 @@
                             @focus="resetEstado"
                         />
                     </div>
+
                 </div>
+
+
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -56,9 +59,11 @@
                     <div v-if="error && procesando" class="alert alert-danger" role="alert">
                         Debes rellenar todos los campos!
                     </div>
+
                     <div v-if="correcto" class="alert alert-success" role="alert">
                         La persona ha sido agregada correctamente!
                     </div>
+
                 </div>
             </div>
         </div>
@@ -74,6 +79,8 @@ export default {
             procesando: false,
             correcto: false,
             error: false,
+            dismissSecs: 5,
+            dismissCountDown: 0,
             persona: {
             nombre: '',
             apellido: '',
@@ -95,6 +102,7 @@ export default {
             this.$refs.nombre.focus();
             this.error = false;
             this.correcto = true;
+            setTimeout(() => { this.correcto= false; }, 1000);
             this.procesando = false;
             // Restablecemos el valor de la variables
             this.persona= {
@@ -106,7 +114,8 @@ export default {
         resetEstado() {
             this.correcto = false;
             this.error = false;
-        }
+        },
+        
     },
     computed: {
         nombreInvalido() {
@@ -124,4 +133,7 @@ export default {
 
 <style>
 @import '../assets/FormularioPersona/formulariopersona.css';
+.alert-success{
+    margin-bottom: 20px;
+}
 </style>

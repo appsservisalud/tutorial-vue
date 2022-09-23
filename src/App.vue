@@ -8,45 +8,56 @@
     <div class="row">
         <div class="col-md-12">
             <formulario-persona @add-persona="agregarPersona" />
-            <tabla-personas :personas="personas" @delete-persona="eliminarPersona" @actualizar-persona="actualizarPersona" />
+            <br/>
+
+            <div v-if="alert_delete" class="alert_delete">
+            <b-alert v-if="eliminar_correcto" class="alert alert-success">
+                La persona ha sido eliminada correctamente!
+            </b-alert>
+            </div>
+
+            <div v-if="update_success" class="update_success">
+              <div v-if="actualizar_correcto" class="alert alert-success">
+                La persona ha sido actualizada correctamente!
+            </div>
+            </div>
+
+            <DatatableComponent 
+            :key="index" 
+            :personas="personas"
+            @delete-persona="eliminarPersona">
+            </DatatableComponent>
+
+
         </div>
     </div>
 </div>
 </template>
 
 <script>
+
+import DatatableComponent from './components/datatable.component.vue'
 import TablaPersonas from './components/TablaPersonas.vue'
 import FormularioPersona from './components/FormularioPersona.vue'
 export default {
     name: 'app',
     components: {
+        DatatableComponent,
         TablaPersonas,
         FormularioPersona,
+        
     },
     data() {
         return {
-            personas: [
-                {
-                    id: 1,
-                    nombre: 'Jon',
-                    apellido: 'Nieve',
-                    email: 'jon@email.com',
-                },
-                {
-                    id: 2,
-                    nombre: 'Tyrion',
-                    apellido: 'Lannister',
-                    email: 'tyrion@email.com',
-                },
-                {
-                    id: 3,
-                    nombre: 'Daenerys',
-                    apellido: 'Targaryen',
-                    email: 'daenerys@email.com',
-                },
-            ],
+            personas:[],
+            index:1,
+            eliminar_correcto:false,
+            alert_delete:false,
+    
         }
+
     },
+
     methods: {
         agregarPersona(persona) {
             let id= 0;
@@ -56,18 +67,30 @@ export default {
             }
             
             this.personas= [...this.personas, { ...persona, id}];
+            this.index++
         },
         eliminarPersona(id) {
             this.personas = this.personas.filter(
                 persona => persona.id !== id
             );
+            this.eliminar_correcto = true;
+            this.alert_delete = true
+
+            setTimeout(() => { this.eliminar_correcto= false,
+                                this.alert_delete = false
+                ; }, 1000);
+    
+           
         },
         actualizarPersona(id, personaActualizada) {
             this.personas = this.personas.map(persona =>
                 persona.id === id ? personaActualizada : persona
-            )
+            );
+        
+
         }
-    }
+
+    },
 }
 </script>
 
@@ -75,4 +98,10 @@ export default {
 body {
     background: #f9f9f9;
 }
+
+.alert_delete{
+        margin-bottom: 80px;
+    }
+
+
 </style>
