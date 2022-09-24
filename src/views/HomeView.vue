@@ -1,9 +1,15 @@
 <template>
-  <div class="home">
-    <router-link to="/">Cerrar sesión</router-link> 
-    <router-link to="/home">Home</router-link>
-    <router-link to="/about">About</router-link>
-  </div>
+
+
+<nav>
+  <ul>
+        <li class="nav-item">
+          <router-link to="/"><span><img src="../assets/Loggin/close.png" alt="">  Cerrar sesión</span></router-link> 
+        </li>
+  </ul>
+</nav>
+
+
   
   <div id="app" class="container">
     <div class="row">
@@ -17,9 +23,9 @@
             <br/>
 
             <div v-if="alert_delete" class="alert_delete">
-            <b-alert v-if="eliminar_correcto" class="alert alert-success">
+            <div v-if="eliminar_correcto" class="alert alert-success">
                 La persona ha sido eliminada correctamente!
-            </b-alert>
+            </div>
             </div>
 
             <div v-if="update_success" class="update_success">
@@ -42,10 +48,14 @@
 </template>
 
 <script>
+  
   import DatatableComponent from '../components/datatable.component.vue'
   import TablaPersonas from '../components/TablaPersonas.vue'
   import FormularioPersona from '../components/FormularioPersona.vue'
   export default {
+    mounted(){
+      M.AutoInit()
+    },
       name: 'HomeView',
       components: {
           DatatableComponent,
@@ -96,25 +106,36 @@
   </script>
   
   <style>
-  body {
-      background: #f9f9f9;
-  }
-  .alert_delete{
-          margin-bottom: 80px;
-      }
-  
-      nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+    background: #f9f9f9;
 }
-  
+.alert_delete{
+        
+        width:100%;
+        margin-bottom: 80px;
+    }
+
+a:link, a:visited, a:active {
+text-decoration:none;
+}
+nav a{
+text-decoration:none;
+color:inherit;
+font-size:14px;
+}
+
+nav li{
+display:inline-block;
+margin-left: 600px;
+width:50%;
+padding:30px 50px;
+background: #f9f9f9;
+text-align:right;
+color:rgb(100, 100, 100);
+} 
+
+nav li a:hover{
+color:rgb(129, 17, 17);
+}
 
   </style>

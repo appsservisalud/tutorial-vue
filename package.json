@@ -27,6 +27,7 @@
     "datatables.net-dt": "^1.12.1",
     "datatables.net-vue3": "^1.0.0",
     "jquery": "^3.6.1",
+    "materialize-css": "^1.0.0-rc.2",
     "nodemon": "^2.0.19",
     "rimraf": "^3.0.2",
     "vue": "^3.2.13",

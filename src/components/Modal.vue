@@ -61,8 +61,8 @@
     border-radius: 10px;
     width: 500px;
     height:auto;
-    margin-left: 400px;
-    margin-top:30px;
+    margin-left: 550px;
+    margin-top:90px;
   }
   
 
