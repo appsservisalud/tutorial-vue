@@ -132,7 +132,6 @@ export default {
 </script>
 
 <style>
-@import '../assets/FormularioPersona/formulariopersona.css';
 .alert-success{
     margin-bottom: 20px;
 }
