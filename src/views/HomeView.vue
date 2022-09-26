@@ -5,7 +5,7 @@
                                 <nav>
                                         <ul>
                                                 <li class="nav-item">
-                                                <router-link to="/"><span><img src="../assets/Loggin/check-out.png" width="30" height="30" alt="">  Cerrar sesión</span></router-link> 
+                                                <router-link to="/"><span> <img src="../assets/Loggin/check-out.png" width="30" height="30" alt=""> Cerrar sesión</span></router-link> 
                                                 </li>
                                         </ul>
                                </nav>
@@ -106,6 +106,7 @@
               setTimeout(() => { this.eliminar_correcto= false,
                                   this.alert_delete = false
                   ; }, 1000);
+              console.log(id)
           },
           actualizarPersona(id, personaActualizada) {
               this.personas = this.personas.map(persona =>
