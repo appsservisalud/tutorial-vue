@@ -1,5 +1,5 @@
 <template>
-    <transition name="modal-fade">
+    <transition >
       <div class="modal-backdrop">
         <div
           class="modal"
@@ -9,14 +9,6 @@
         >
           <header class="modal-header" id="modalTitle">
             <slot name="header"> Default Header </slot>
-            <button
-              type="button"
-              class="close-btn"
-              @click="close"
-              aria-label="Close Modal"
-            >
-              x
-            </button>
           </header>
   
           <main class="modal-body" id="modalDescription">
