@@ -3,7 +3,6 @@ dist/
 node_modules
 .parcel-cache/
 appsscript/
-vue.config.js
 .clasp.json
 # local env files
 .env.local
