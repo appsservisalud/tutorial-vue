@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Nombre</label>
+                        <label>Nombres</label>
                         <input
                             ref="nombre"
                             v-model="persona.nombre"

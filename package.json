@@ -4,20 +4,20 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "vbuild": "vue-cli-service build",
-    "start": "nodemon --watch ./src -e html,js,css,scss,vue --exec \"npm run build\" ",
     "build": "parcel build --no-scope-hoist ./src/index.html --dist-dir ./appsscript && npm run clean",
     "clean": "rimraf ./appsscript/*.css  ./appsscript/*.map",
-    "sass": "sass --watch src/assets/scss/:src/assets/css/",
+    "gcreate": "clasp create --title \"tutorial-vue\" --rootDir ./appsscript",
+    "gdeploys": "clasp deployments",
+    "ghelp": "clasp --help",
     "glogin": "clasp login",
     "glogout": "clasp logout",
+    "gopen": "clasp open --webapp",
     "gpull": "clasp pull",
     "gpush": "clasp deploy --deploymentId   AKfycbyuZ2ZiJeKK3yIV6PcmD73a52txM0gi5MzYe2QCjRxo --versionNumber 0 ",
-    "gcreate": "clasp create --title \"tutorial-vue\" --rootDir ./appsscript",
     "gstart": "clasp push",
-    "gopen": "clasp open --webapp",
-    "ghelp": "clasp --help",
-    "gdeploys": "clasp deployments"
+    "sass": "sass --watch src/assets/scss/:src/assets/css/",
+    "start": "nodemon --watch ./src  -e html,js,css,scss,vue --exec \"npm run build\" ",
+    "vbuild": "vue-cli-service build"
   },
   "dependencies": {
     "@types/google-apps-script": "^1.0.55",
@@ -26,11 +26,13 @@
     "nodemon": "^2.0.19",
     "rimraf": "^3.0.2",
     "vue": "^3.2.13",
-    "vue-axios": "^3.4.1"
+    "vue-axios": "^3.4.1",
+    "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@parcel/transformer-vue": "^2.7.0",
     "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "os-browserify": "^0.3.0",
     "parcel": "^2.7.0",
