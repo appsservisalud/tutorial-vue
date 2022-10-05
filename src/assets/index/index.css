@@ -1,0 +1,57 @@
+
+.container-fluid{
+    padding-top:150px ;
+    margin-left:10px ;
+}
+
+
+.btn{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  border: none;
+  
+}
+
+
+.btn:hover{
+  transform: translate(-5px,-5px);
+  background-color: aliceblue;
+}
+
+
+.btn:hover::after{
+  transform: translate(4px,4px);
+}
+
+.btn:before{
+  transform: translate(7px,7px);
+}
+
+.session-img{
+  margin-left: 50px;
+
+}
+
+.header{
+  margin-top:-200px
+  }
+
+
+
+
+
+  .footer{
+    display: flex;
+    height:50px ;
+    color:rgb(255, 255, 255);
+    background-color: rgb(82, 79, 79);
+    width: 1650px;
+    max-height:50px;
+  
+  }
+
+    
