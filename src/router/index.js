@@ -1,25 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import SessionView from  '../views/SessionView.vue'
+
+import Login from '../views/SessionView.vue'
 import ListView from '../views/ListView.vue'
+import IndexView from '../views/IndexView.vue'
 
 const routes = [
+
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/session',
-    name: 'session',
-    component: SessionView,
-  },
-  {
-    path: '/list_view',
-    name: 'list_view',
-    component: ListView,
+    name: 'index',
+    component: IndexView,
+    props:true
   },
 
+  {
+    path: '/login',
+    name: 'login',
+    component: IndexView,
+    props:true
+    
+  },
+  {
+    path: '/list',
+    name: 'list',
+    component: ListView,
+    props:true
+  },
+  
 ]
 
 const router = createRouter({

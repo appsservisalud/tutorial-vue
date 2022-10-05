@@ -18,7 +18,31 @@
                         placeholder="************"
                         >
                         <p v-if="error" class="error">Has introducido mal el correo o la contraseña.</p>
-                    <input  @click="open_session()" class="form-submit" type="submit" value="Iniciar sesión">
+                    <input  @click="login()" class="form-submit" type="submit" value="Iniciar sesión">
                     </form>
 
 </template>
+
+<script>
+    import auth from '../logic/auth'
+    export default{
+        data(){
+            return{
+                email:'',
+                password:'',
+                error:false
+            }
+        },
+        methods:{
+            async login(){
+            try{
+                   await auth.login(this.email, this.password);
+                   this.$router.push({name:'list'})
+            }catch(error){
+                this.error = true;
+            }
+            }
+                
+        }
+    }
+</script>
